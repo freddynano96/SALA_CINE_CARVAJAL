@@ -1,0 +1,16 @@
+﻿<Application x:Class="SALA_CINE_CARVAJAL.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SALA_CINE_CARVAJAL"
+             xmlns:utilidades="clr-namespace:SALA_CINE_CARVAJAL.Utilidades"
+             StartupUri="Views/InicioSesion.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionary/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <utilidades:ConvertirDeByteArrayAImagenSourceConverter
+            x:Key="ConvertirDeByteArrayAImagenSourceConverterKey"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

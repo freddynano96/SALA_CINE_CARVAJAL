@@ -1,0 +1,100 @@
+﻿<Window x:Class="SALA_CINE_CARVAJAL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SALA_CINE_CARVAJAL"
+        xmlns:viewmodels="clr-namespace:SALA_CINE_CARVAJAL.ViewModels;assembly=SALA_CINE_CARVAJAL.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        HorizontalAlignment="Center" 
+        VerticalAlignment="Center"
+        MinWidth="500"
+        Height="450">
+    <Grid>
+            <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Archivo" >
+                    <MenuItem  Header="_Cerrar Sesion"/>
+                </MenuItem>
+                <MenuItem Tag="ADMINISTRADOR" x:Name="MENUADMINISTRADOR" Header="A_dministracion" Visibility="Hidden">
+                    <MenuItem Header="Administrar _Peliculas" Click="MenuItemAdministrarPeliculas_Click"></MenuItem>
+                    <MenuItem Header="Administrar _Salas" Click="AdministrarSalas_Click"></MenuItem>
+                    <MenuItem Header="Ver _Usuarios" Click="MenuItem_Click"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <Grid Style="{StaticResource principalBack}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" x:Name="BOTONESADMINISTRADOR" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.ColumnSpan="3">ADMINISTRACIÓN</Label>
+                    <Button Grid.Row="1" Click="AdministrarSalas_Click">SALAS</Button>
+                    <Button Grid.Column="1" Grid.Row="1">PELICULAS</Button>
+                    <Button Grid.Column="2" Grid.Row="1">USUARIOS</Button>
+                </Grid>
+                <ScrollViewer Grid.Row="1">
+                    <ScrollViewer.DataContext>
+                        <viewmodels:PeliculasViewModel/>
+                    </ScrollViewer.DataContext>
+                    <Grid>
+                        <ItemsControl ItemsSource="{Binding Peliculas}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="3" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="2" BorderBrush="#5f5f5f">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition Height="3*"/>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label 
+                                        Grid.Row="0" Background="#222222" Margin="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50">
+                                                <TextBlock Text="{Binding Titulo}" TextAlignment="Center"  TextWrapping="NoWrap" ></TextBlock>
+                                            </Label>
+                                            <Image 
+                                        Grid.Row="1"
+                                MaxWidth="250"
+                                Width="250"
+                                Stretch="UniformToFill" 
+                                Source="{Binding Imagen, Converter={StaticResource ConvertirDeByteArrayAImagenSourceConverterKey}}"
+                                RenderOptions.EdgeMode="Aliased"/>
+                                            <TextBlock Text="{Binding Descripcion}" 
+                                   TextWrapping="WrapWithOverflow" MaxHeight="80" 
+                                   FontSize="18" Foreground="#efefef" Grid.Row="2"/>
+                                            <Grid Grid.Row="3">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </ScrollViewer>
+                
+            </Grid>
+            </DockPanel>
+        
+        </Grid>
+</Window>

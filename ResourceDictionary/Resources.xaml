@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="Grid" x:Key="principalBack">
+        <Setter Property="Background" Value="#303030"></Setter>
+    </Style>
+    <!--<Style TargetType="DockPanel">
+        <Setter Property="Background" Value="#303030"></Setter>
+    </Style>-->
+    <!--<Style TargetType="{x:Type MenuItem}">
+        <Setter Property="Background" Value="#003A5D"></Setter>
+    </Style>-->
+    <!--<Style TargetType="TextBlock">
+        <Setter Property="Background" Value="#424242"></Setter>
+        <Setter Property="Foreground" Value="#fff"></Setter>
+        
+    </Style>-->
+    <Style TargetType="TextBox">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="Margin" Value="10,10,10,10"></Setter>
+        <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+        <Setter Property="BorderBrush" Value="#fff"></Setter>
+        <Setter Property="Background" Value="#424242"></Setter>
+        <Setter Property="Foreground" Value="#fff"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="BorderThickness" Value="0,0,0,3"></Setter>
+                
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="PasswordBox">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="Margin" Value="10,10,10,10"></Setter>
+        <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+        <Setter Property="Background" Value="#424242"></Setter>
+        <Setter Property="Foreground" Value="#fff"></Setter>
+    </Style>
+    <Style TargetType="Label">
+        <Setter Property="Margin" Value="5,5,5,5"></Setter>
+        <Setter Property="Foreground" Value="#fff"></Setter>
+        <Setter Property="FontSize" Value="18"></Setter>
+    </Style>
+    <Style TargetType="Label" x:Key="MensajeError">
+        <Setter Property="Foreground" Value="#f80000"/>
+    </Style>
+    <Style TargetType="Button">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="Margin" Value="10,10,10,10"></Setter>
+        <Setter Property="Padding" Value="5,5,5,5"></Setter>
+        <Setter Property="Foreground" Value="#fff"></Setter>
+        <Setter Property="Background" Value="#003A5D"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#013A5D"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
